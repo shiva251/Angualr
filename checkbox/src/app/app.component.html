@@ -1,0 +1,63 @@
+
+<div>
+
+<fd-switch [compact]="true" [(ngModel)]="checked" (change)="tabValue(checked)"></fd-switch>
+
+
+<div style="width: 30%;">
+  <div>
+<fd-tile style="width: 15%; float: left;" >
+  <div fd-tile-header></div>
+  <div fd-tile-content></div>
+  <div fd-tile-footer></div>
+</fd-tile>
+</div>
+<div style=" margin-left: 50%">
+  <fd-tile *ngIf = '!checked' >
+    <div fd-tile-header></div>
+    <div fd-tile-content></div>
+    <div fd-tile-footer></div>
+  </fd-tile>
+</div>
+</div>
+
+</div>
+
+<br>
+<!-- fd-checkbox -->
+<div style="clear:left">
+<ng-template let-dialog let-dialogConfig="dialogConfig" #confirmationDialog>
+  <fd-dialog [dialogConfig]="dialogConfig" [dialogRef]="dialog">
+      <fd-dialog-header>
+          <h1 fd-title>The History of Pineapple</h1>
+          <button fd-dialog-close-button (click)="dialog.dismiss('Close button')"></button>
+      </fd-dialog-header>
+
+      <fd-dialog-body>
+        <fd-checkbox label="Don't Show Again" [(ngModel)]="checkboxValue" (change)="checkValue(checkboxValue)" ></fd-checkbox>
+      </fd-dialog-body>
+
+      <fd-dialog-footer>
+          <fd-button-bar
+                  fdType="emphasized"
+                  label="Interested"
+                  (click)="dialog.close('Continue')">
+          </fd-button-bar>
+          <fd-button-bar
+                  fd-initial-focus
+                  label="Cancel"
+                  (click)="dialog.dismiss('Cancel')">
+          </fd-button-bar>
+      </fd-dialog-footer>
+  </fd-dialog>
+</ng-template>
+
+<button fd-button label="Open from Template" (click)="openDialog(confirmationDialog)"></button>
+<!-- <form [formGroup]="checkboxvalue">
+  <fd-checkbox label="Don't Show Again" [(ngModel)]="checkboxValue" (change)="checkValue(checkboxValue)" ></fd-checkbox>
+
+</form> -->
+<!-- <p>{{ confirmationReason }}</p> -->
+
+</div>
+<router-outlet></router-outlet>
